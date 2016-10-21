@@ -24,3 +24,9 @@ end
 
 Capybara.current_driver = Capybara.javascript_driver
 Capybara.app = app
+# the following lines fix the isssue with Selenium driver
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
+
+Capybara.javascript_driver = :chrome
